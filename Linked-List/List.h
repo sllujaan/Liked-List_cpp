@@ -23,6 +23,9 @@ public:
 	List(U (&arr)[size]);
 
 	void add(U parm);
+	U remove(size_t index);
+	void removeAll();
+	void initDeleteAll();
 
 	template<size_t size>
 	void add(U(&arr)[size]);
