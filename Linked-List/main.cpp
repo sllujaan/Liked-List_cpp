@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 #include"List.cpp"
+#include<Windows.h>
 //#include"Node.cpp"
 
 int main(int argc, char* argv[]) {
@@ -12,6 +13,7 @@ int main(int argc, char* argv[]) {
 	INT_LIST list = arr;
 	list.add(6);
 	list.add(arr2);
+	list.removeCurrent();
 	
 	cout << "length = " << list.length << endl;
 	cout << list.rearNode->value << endl;
@@ -19,7 +21,7 @@ int main(int argc, char* argv[]) {
 
 	cout << list << endl;
 	
-	
+	list.removeAll();
 	/*
 	list.add(2);
 	list.add(3);

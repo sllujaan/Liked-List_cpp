@@ -24,8 +24,10 @@ public:
 
 	void add(U parm);
 	U remove(size_t index);
+	U removeCurrent();
 	void removeAll();
 	void initDeleteAll();
+
 
 	template<size_t size>
 	void add(U(&arr)[size]);

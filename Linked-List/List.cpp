@@ -33,6 +33,7 @@ List<T, U>::List(U parm)
 template<typename T, typename U>
 List<T, U>::~List()
 {
+	cout << "destructor called." << endl;
 	this->initDeleteAll();
 }
 
@@ -83,20 +84,45 @@ void List<T, U>::add(U parm)
 template<typename T, typename U>
 U List<T, U>::remove(size_t index)
 {
+	if ((index > 0) && (index <= this->length)) {
+		return U;
+	}
 	return U;
+}
+
+template<typename T, typename U>
+U List<T, U>::removeCurrent()
+{
+
+		
+		T* nodeToDelete = this->currentNode;
+		U value = nodeToDelete->value;
+
+		this->prevNode->nextNode = this->nextNode;
+		if (this->nextNode) {
+			this->nextNode->prevNode = this->prevNode;
+			this->currentNode = this->nextNode;
+		}
+		else {
+			this->currentNode = this->prevNode;
+			cout << "deleting memory...>>>" << nodeToDelete << endl;
+			delete[] nodeToDelete;
+		}
+		
+		--this->length;
+		return value;
 }
 
 template<typename T, typename U>
 void List<T, U>::removeAll()
 {
+	cout << "removeAll called." << endl;
 	this->initDeleteAll();
 }
 
 template<typename T, typename U>
 void List<T, U>::initDeleteAll()
 {
-	cout << "destructor called." << endl;
-
 
 	this->currentNode = this->rearNode;
 
@@ -108,9 +134,7 @@ void List<T, U>::initDeleteAll()
 		cout << "deleting memory..." << nodeToDelete << endl;
 		delete[] nodeToDelete;
 
-
-
 	}
-	//delete[] this->currentNode;
+	this->length = 0;
 }
 
